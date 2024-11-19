@@ -1,1 +1,70 @@
+( DANS LE CAS OU LE CHAT SE DEPLACE EN FONCTION DU LABYRINTHE)
 
+def cat_move(maze):
+    """
+This function moves the cat randomly while considering the obstacles in the maze
+"""
+    global position
+    x, y = position # position actuelle en x et y
+
+      # Choisir une direction aléatoire
+    direction = random.choice(["up", "down", "left", "right", "still"])
+
+    # Ajuster les coordonnées en fonction de la direction
+    if direction == "up" and y > 0 and [x, y - 1] not in maze:
+        y -= 1
+    elif direction == "down" and y < 4 and [x, y + 1] not in maze:
+        y += 1
+    elif direction == "left" and x > 0 and [x - 1, y] not in maze:
+        x -= 1
+    elif direction == "right" and x < 4 and [x + 1, y] not in maze:
+        x += 1
+    elif direction == "still":  # Correction: Ajout de ":"
+        pass  # Le chat reste ne bouge pas
+
+    # Mettre à jour la position globale
+    position = [x, y]
+
+while True:
+    
+    # Afficher la position actuelle du chat
+    display.set_pixel(position[0], position[1], 8)  # le 8 représente l'intensité du pixel
+
+   cat_move()  # Déplacer le chat de manière aléatoire
+
+    sleep(2000)  # Lapse de temps avant que le chat se déplaxe de nouveau
+
+
+
+(DANS LE CAS OU LE CHAT SE DEPLACE SANS TENIR COMPTE DU LABYRINTHE)
+
+def cat_move():
+    """
+This function moves the cat randomly 
+"""
+    global position
+    x, y = position  #  la position actuelle en x et y
+
+    # Choisir une direction aléatoire
+    direction = random.choice(["up", "down", "left", "right", "still"])
+
+    # Ajuster les coordonnées en fonction de la direction
+    if direction == "up" and y > 0:  # Limite haut de la grille
+        y -= 1
+    elif direction == "down" and y < 4:  # Limite bas de la grille
+        y += 1
+    elif direction == "left" and x > 0:  # Limite gauche de la grille
+        x -= 1
+    elif direction == "right" and x < 4:  # Limite droite de la grille
+        x += 1
+    elif direction == "still":  
+        pass  # Le chat ne bouge pas
+
+    # Actualiser la position globale
+    position = [x, y]
+while True:
+    cat_move()
+
+ # Afficher la position actuelle du chat
+    display.set_pixel(position[0], position[1], 8)  # Afficher le chat avec l'intensité 8
+    sleep(2000)  # Lapse de tempds avant que le chat se déplace de nouveau
