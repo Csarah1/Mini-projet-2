@@ -3,11 +3,12 @@ def generate_cat_position(maze:list) -> list[int]:
 """
 cette fonction génère une position aléatoire du chat en tenant compte des obstacles du labyrinthe
 
-paramètres:
+parameters:
 -----------
-maze: list c'est une liste de tuples qui represente la position des murs du labyrinthe en x et y
+maze: list # c'est une liste de tuples qui represente la position des murs du labyrinthe en x et y
 return
-
+------
+list : int # cette liste va contenir deux entiers [x,y] representant la position aléatoire du chat
 """
     while True:
         x = random.randint(0, 4)
@@ -16,7 +17,7 @@ return
         if (x, y) not in maze:
             return [x, y]
             
-maze = build_maze() # JE NE CONNAIS PAS LE NOM DE LA FONCTION UTILISEE POUR CREER LE LABYRINTHE
-position = generate_cat_position(maze)
+maze = create_maze() # JE NE CONNAIS PAS LE NOM DE LA FONCTION UTILISEE POUR CREER LE LABYRINTHE
+position = generate_cat_position(maze) 
 display.set_pixel(position[0], position[1], 8) 
 #8 est l'intensité du pixel
