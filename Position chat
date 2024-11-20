@@ -5,7 +5,8 @@ cette fonction génère une position aléatoire du chat en tenant compte des obs
 
 paramètres:
 -----------
-maze: list 
+maze: list c'est une liste de tuples qui represente la position des murs du labyrinthe en x et y
+return
 
 """
     while True:
