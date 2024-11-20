@@ -19,5 +19,5 @@ list : int # cette liste va contenir deux entiers [x,y] representant la position
             
 maze = create_maze() # JE NE CONNAIS PAS LE NOM DE LA FONCTION UTILISEE POUR CREER LE LABYRINTHE
 position = generate_cat_position(maze) 
-display.set_pixel(position[0], position[1], 8) 
-#8 est l'intensité du pixel
+display.set_pixel(position[0], position[1], 7) 
+#7 est l'intensité du pixel
