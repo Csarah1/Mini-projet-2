@@ -1,16 +1,26 @@
-( DANS LE CAS OU LE CHAT SE DEPLACE EN FONCTION DU LABYRINTHE)
+import random
+from time import sleep
 
-def cat_move(maze):
+def cat_move(maze:list): -> list: int
     """
-This function moves the cat randomly while considering the obstacles in the maze
-"""
-    global position
-    x, y = position # position actuelle en x et y
+    Déplace le chat de manière aléatoire dans le labyrinthe tout en évitant les obstacles.
 
-      # Choisir une direction aléatoire
+    Paramètres :
+    ------------
+    maze : list
+        Une liste de positions (x, y) représentant les obstacles du labyrinthe.
+
+    return :
+    -------
+    Met à jour la position globale du chat.
+    """
+    global position
+    x, y = position  # Position actuelle du chat
+
+    # Choisir une direction aléatoire parmi celles possibles
     direction = random.choice(["up", "down", "left", "right", "still"])
 
-    # Ajuster les coordonnées en fonction de la direction
+    # Vérifier et ajuster les coordonnées selon la direction choisie
     if direction == "up" and y > 0 and [x, y - 1] not in maze:
         y -= 1
     elif direction == "down" and y < 4 and [x, y + 1] not in maze:
@@ -19,46 +29,61 @@ This function moves the cat randomly while considering the obstacles in the maze
         x -= 1
     elif direction == "right" and x < 4 and [x + 1, y] not in maze:
         x += 1
-    elif direction == "still":  # Correction: Ajout de ":"
+     elif direction == "still": 
         pass  # Le chat reste ne bouge pas
 
-    # Mettre à jour la position globale
+    # Mettre à jour la position du chat
     position = [x, y]
 
+
+# Boucle principale pour déplacer le chat en continu
 while True:
-    
     # Afficher la position actuelle du chat
-    display.set_pixel(position[0], position[1], 8)  # le 8 représente l'intensité du pixel
+    display.set_pixel(position[0], position[1], 7)  # Le "7" est l'intensité du pixel
 
-   cat_move()  # Déplacer le chat de manière aléatoire
+    # Déplacer le chat
+    cat_move(maze)
 
-    sleep(2000)  # Lapse de temps avant que le chat se déplaxe de nouveau
+    # Pause avant le prochain mouvement
+    sleep(3)  # Pause de 3 secondes
 
 
 
 (DANS LE CAS OU LE CHAT SE DEPLACE SANS TENIR COMPTE DU LABYRINTHE)
 
-def cat_move():
-    """
-This function moves the cat randomly 
+import random
+from time import sleep
+
+def cat_move(maze:list): -> list: int
+ """
+    Déplace le chat de manière aléatoire dans le labyrinthe tout en évitant les obstacles.
+
+    Paramètres :
+    ------------
+    maze : list
+        Une liste de positions (x, y) représentant les obstacles du labyrinthe.
+
+    return :
+    -------
+    Met à jour la position globale du chat.
 """
     global position
     x, y = position  #  la position actuelle en x et y
 
     # Choisir une direction aléatoire
-    direction = random.choice(["up", "down", "left", "right", "still"])
+    direction = random.choice(["up", "down", "left", "right"])
 
     # Ajuster les coordonnées en fonction de la direction
-    if direction == "up" and y > 0:  # Limite haut de la grille
+   if direction == "up" and y > 0 and [x, y - 1] not in maze:
         y -= 1
-    elif direction == "down" and y < 4:  # Limite bas de la grille
+    elif direction == "down" and y < 4 and [x, y + 1] not in maze:
         y += 1
-    elif direction == "left" and x > 0:  # Limite gauche de la grille
+    elif direction == "left" and x > 0 and [x - 1, y] not in maze:
         x -= 1
-    elif direction == "right" and x < 4:  # Limite droite de la grille
+    elif direction == "right" and x < 4 and [x + 1, y] not in maze:
         x += 1
-    elif direction == "still":  
-        pass  # Le chat ne bouge pas
+    else :
+        pass
 
     # Actualiser la position globale
     position = [x, y]
@@ -66,5 +91,5 @@ while True:
     cat_move()
 
  # Afficher la position actuelle du chat
-    display.set_pixel(position[0], position[1], 8)  # Afficher le chat avec l'intensité 8
-    sleep(2000)  # Lapse de tempds avant que le chat se déplace de nouveau
+    display.set_pixel(position[0], position[1], 7)  # Afficher le chat avec l'intensité 7
+    sleep(3)  # Lapse de tempds avant que le chat se déplace de nouveau
