@@ -1,1 +1,11 @@
 
+def generate_cat_position(maze):
+    while True:
+        x = random.randint(0, 4)
+        y = random.randint(0, 4)
+        if (x, y) not in maze:  # Assurer que le chat n'est pas sur un pixel d'un mur
+            return [x, y]
+            
+maze = build_maze() # JE NE CONNAIS PAS LE NOM DE LA FONCTION UTILISEE POUR CREER LE LABYRINTHE
+position = generate_cat_position(maze)
+display.set_pixel(position[0], position[1], 8)
