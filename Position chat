@@ -1,5 +1,8 @@
 
-def generate_cat_position(maze):
+def generate_cat_position(maze:list) -> list[int]:
+"""
+cette fonction génère une position aléatoire du chat en tenant compte des obstacles du labyrinthe
+"""
     while True:
         x = random.randint(0, 4)
         y = random.randint(0, 4)
