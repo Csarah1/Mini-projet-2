@@ -6,9 +6,11 @@ cette fonction génère une position aléatoire du chat en tenant compte des obs
     while True:
         x = random.randint(0, 4)
         y = random.randint(0, 4)
-        if (x, y) not in maze:  # Assurer que le chat n'est pas sur un pixel d'un mur
+# Assurer que le chat n'est pas sur un pixel d'un mur
+        if (x, y) not in maze:
             return [x, y]
             
 maze = build_maze() # JE NE CONNAIS PAS LE NOM DE LA FONCTION UTILISEE POUR CREER LE LABYRINTHE
 position = generate_cat_position(maze)
-display.set_pixel(position[0], position[1], 8)
+display.set_pixel(position[0], position[1], 8) 
+#8 est l'intensité du pixel
