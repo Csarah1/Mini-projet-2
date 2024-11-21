@@ -9,7 +9,7 @@ def cat_move(maze:list): -> list: int
     Paramètres :
     ------------
     maze : list
-        Une liste de positions (x, y) représentant les obstacles du labyrinthe.
+      liste de positions (x, y) représentant les obstacles du labyrinthe.
 
     return :
     -------
@@ -36,8 +36,6 @@ def cat_move(maze:list): -> list: int
     # Mettre à jour la position du chat
     position = [x, y]
 
-
-# Boucle principale pour déplacer le chat en continu
 while True:
     # Afficher la position actuelle du chat
     display.set_pixel(position[0], position[1], 7)  # Le "7" est l'intensité du pixel
@@ -46,7 +44,7 @@ while True:
     cat_move(maze)
 
     # Pause avant le prochain mouvement
-    sleep(3)  # Pause de 3 secondes
+    sleep(3) 
 
 
 
@@ -62,7 +60,7 @@ def cat_move(maze:list): -> list: int
     Paramètres :
     ------------
     maze : list
-        Une liste de positions (x, y) représentant les obstacles du labyrinthe.
+         liste de positions (x, y) représentant les obstacles du labyrinthe.
 
     return :
     -------
