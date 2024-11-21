@@ -1,6 +1,6 @@
 
 def generate_cat_position(maze:list) -> list[int]:
-"""
+    """
 cette fonction génère une position aléatoire du chat en tenant compte des obstacles du labyrinthe
 
 parameters:
