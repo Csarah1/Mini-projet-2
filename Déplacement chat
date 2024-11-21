@@ -34,15 +34,15 @@ def cat_move(maze:list, position : list) -> list[int] :
     return [x, y]
 
 while True:
-    display.clear()
+    display.set_pixel(position[0], position[1], 0)
     # Afficher la position actuelle du chat
     display.set_pixel(position[0], position[1], 7)  # Le "7" est l'intensité du pixel
 
     # Déplacer le chat
-    cat_move(maze)
+    position = cat_move(maze, position)
 
     # Pause avant le prochain mouvement
-    sleep(5)  # Le chat ne bouge pas
+    sleep(2)  # Le chat ne bouge pas
  
 
 
@@ -85,9 +85,11 @@ def cat_move(maze:list, position : list) -> list[int] :
 
     # Actualiser la position globale
 while True:
-    display.clear()
-    cat_move()
+    display.set_pixel(position[0], position[1], 0)
+
+    # Déplacer le chat
+    position = cat_move(maze, position)
 
  # Afficher la position actuelle du chat
     display.set_pixel(position[0], position[1], 7)  # Afficher le chat avec l'intensité 7
-    sleep(5)  # Lapse de tempds avant que le chat se déplace de nouveau
+    sleep(2)  # Lapse de tempds avant que le chat se déplace de nouveau
