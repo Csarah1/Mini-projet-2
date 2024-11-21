@@ -18,10 +18,10 @@ def cat_move(maze:list): -> list: int
     global position
     x, y = position  # Position actuelle du chat
 
-    # Choisir une direction aléatoire parmi celles possibles
+    # Choisir une direction aléatoire 
     direction = random.choice(["up", "down", "left", "right", "still"])
 
-    # Vérifier et ajuster les coordonnées selon la direction choisie
+    # Vérifier les coordonnées en fonction de la direction
     if direction == "up" and y > 0 and [x, y - 1] not in maze:
         y -= 1
     elif direction == "down" and y < 4 and [x, y + 1] not in maze:
@@ -31,7 +31,7 @@ def cat_move(maze:list): -> list: int
     elif direction == "right" and x < 4 and [x + 1, y] not in maze:
         x += 1
      elif direction == "still": 
-        pass  # Le chat reste ne bouge pas
+        pass  # Le chat ne bouge pas
 
     # Mettre à jour la position du chat
     position = [x, y]
