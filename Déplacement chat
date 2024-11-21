@@ -1,15 +1,15 @@
-(DANS LE CAS  OU LE CHAT SE DEPLACE EN FONCTION DU LABYRINTHE)
+   (DANS LE CAS  OU LE CHAT SE DEPLACE EN FONCTION DU LABYRINTHE)
 import random
 from time import sleep
 
-def cat_move(maze:list, position : list)-> list: int :
-    """
+def cat_move(maze:list, position : list): -> list: int
+    """ 
     Déplace le chat de manière aléatoire dans le labyrinthe tout en évitant les obstacles.
 
     Paramètres :
     ------------
-    maze : list
-      liste de positions (x, y) représentant les obstacles du labyrinthe.
+    maze : liste de positions (x, y) représentant les obstacles du labyrinthe. (list)
+    position : Position actuelle du chat en coordonnées [x, y] (list)
 
     return :
     -------
@@ -31,7 +31,21 @@ try:
     elif direction == "right" and x < 4 and [x + 1, y] not in maze:
         x += 1
 except:
-        pass  # Le chat ne bouge pas
+    display.set_pixel(x, y, 7)  # Le chat ne bouge pas
+
+    # Mettre à jour la position du chat
+    position = [x, y]
+
+while True:
+    display.clear()
+    # Afficher la position actuelle du chat
+    display.set_pixel(position[0], position[1], 7)  # Le "7" est l'intensité du pixel
+
+    # Déplacer le chat
+    cat_move(maze)
+
+    # Pause avant le prochain mouvement
+    sleep(5)  # Le chat ne bouge pas
 
     # Mettre à jour la position du chat
     position = [x, y]
@@ -60,8 +74,8 @@ def cat_move(maze:list, position: list): -> list: int
 
     Paramètres :
     ------------
-    maze : list
-         liste de positions (x, y) représentant les obstacles du labyrinthe.
+    maze : liste de positions (x, y) représentant les obstacles du labyrinthe. (list)
+    position : Position actuelle du chat en coordonnées [x, y] (list)
 
     return :
     -------
@@ -82,7 +96,8 @@ def cat_move(maze:list, position: list): -> list: int
     elif direction == "right" and x < 4 and [x + 1, y] not in maze:
         x += 1
     else :
-        pass
+        display.set_pixel(x, y, 7)  # Le chat ne bouge pas
+
 
     # Actualiser la position globale
     position = [x, y]
