@@ -1,3 +1,4 @@
+(DANS LE CAS  OU LE CHAT SE DEPLACE EN FONCTION DU LABYRINTHE)
 import random
 from time import sleep
 
