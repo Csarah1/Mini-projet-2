@@ -1,8 +1,9 @@
    (DANS LE CAS  OU LE CHAT SE DEPLACE EN FONCTION DU LABYRINTHE)
 import random
 from time import sleep
+from microbit import display
 
-def cat_move(maze:list, position : list) -> list: [int] :
+def cat_move(maze:list, position : list) -> list[int] :
     """ 
     Déplace le chat de manière aléatoire dans le labyrinthe tout en évitant les obstacles.
 
@@ -21,7 +22,6 @@ def cat_move(maze:list, position : list) -> list: [int] :
     direction = random.choice(["up", "down", "left", "right", "still"])
 
     # Vérifier les coordonnées en fonction de la direction
-try:
     if direction == "up" and y > 0 and [x, y - 1] not in maze:
         y -= 1
     elif direction == "down" and y < 4 and [x, y + 1] not in maze:
@@ -30,11 +30,8 @@ try:
         x -= 1
     elif direction == "right" and x < 4 and [x + 1, y] not in maze:
         x += 1
-except:
-    display.set_pixel(x, y, 7)  # Le chat ne bouge pas
-
-    # Mettre à jour la position du chat
-    position = [x, y]
+  # Si c'est "still" le chat ne bouge pas
+    return [x, y]
 
 while True:
     display.clear()
@@ -43,13 +40,9 @@ while True:
 
     # Déplacer le chat
     cat_move(maze)
-      return
 
     # Pause avant le prochain mouvement
     sleep(5)  # Le chat ne bouge pas
-
-    # Mettre à jour la position du chat
-    position = [x, y]
  
 
 
@@ -58,9 +51,10 @@ while True:
 
 import random
 from time import sleep
+from microbit import display
 
-def cat_move(maze:list, position: list): -> list: [int]
- """
+def cat_move(maze:list, position : list) -> list[int] :
+    """ 
     Déplace le chat de manière aléatoire dans le labyrinthe tout en évitant les obstacles.
 
     Paramètres :
@@ -70,9 +64,9 @@ def cat_move(maze:list, position: list): -> list: [int]
 
     return :
     -------
-    Met à jour la position globale du chat.
-"""
-    x, y = position  #  la position actuelle en x et y
+    Déplace et met à jour la position du chat.
+    """
+    x, y = position  # Position actuelle du chat
 
     # Choisir une direction aléatoire
     direction = random.choice(["up", "down", "left", "right"])
@@ -86,12 +80,10 @@ def cat_move(maze:list, position: list): -> list: [int]
         x -= 1
     elif direction == "right" and x < 4 and [x + 1, y] not in maze:
         x += 1
-    else :
-        display.set_pixel(x, y, 7)  # Le chat ne bouge pas
+
         return [x, y]
 
     # Actualiser la position globale
-    position = [x, y]
 while True:
     display.clear()
     cat_move()
