@@ -2,7 +2,7 @@
 import random
 from time import sleep
 
-def cat_move(maze:list, position : list): -> list: int
+def cat_move(maze:list, position : list)-> list: int :
     """
     Déplace le chat de manière aléatoire dans le labyrinthe tout en évitant les obstacles.
 
@@ -21,6 +21,7 @@ def cat_move(maze:list, position : list): -> list: int
     direction = random.choice(["up", "down", "left", "right", "still"])
 
     # Vérifier les coordonnées en fonction de la direction
+try:
     if direction == "up" and y > 0 and [x, y - 1] not in maze:
         y -= 1
     elif direction == "down" and y < 4 and [x, y + 1] not in maze:
@@ -29,7 +30,7 @@ def cat_move(maze:list, position : list): -> list: int
         x -= 1
     elif direction == "right" and x < 4 and [x + 1, y] not in maze:
         x += 1
-    elif direction == "still": 
+except:
         pass  # Le chat ne bouge pas
 
     # Mettre à jour la position du chat
@@ -44,7 +45,7 @@ while True:
     cat_move(maze)
 
     # Pause avant le prochain mouvement
-    sleep(3) 
+    sleep(5) 
 
 
 
@@ -91,4 +92,4 @@ while True:
 
  # Afficher la position actuelle du chat
     display.set_pixel(position[0], position[1], 7)  # Afficher le chat avec l'intensité 7
-    sleep(3)  # Lapse de tempds avant que le chat se déplace de nouveau
+    sleep(5)  # Lapse de tempds avant que le chat se déplace de nouveau
